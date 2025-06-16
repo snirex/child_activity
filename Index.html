@@ -3,153 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>קישורים חינמיים לכל המשפחה</title>
+  <title>קישורים חינמיים לילדים</title>
   <style>
     body {
-      font-family: sans-serif;
-      background: #fefefe;
-      color: #333;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
       margin: 0;
+      padding: 0;
+      direction: rtl;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
       padding: 20px;
     }
-    h1 {
-      text-align: center;
-      color: #0074D9;
-    }
-    .link-list {
+    .item {
+      background: #fff;
       display: flex;
-      flex-direction: column;
-      gap: 20px;
-      margin-top: 30px;
-    }
-    .link-item {
-      display: flex;
+      flex-direction: row;
       align-items: flex-start;
-      gap: 16px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      padding: 16px;
-      transition: transform 0.2s ease;
+      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-    .link-item:hover {
-      transform: translateY(-3px);
+    .item img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-left: 15px;
     }
-    .link-item img {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 8px;
-      flex-shrink: 0;
+    .item-content {
+      flex: 1;
     }
-    .link-info {
-      flex-grow: 1;
-    }
-    .link-info h3 {
-      margin: 0 0 6px;
-      color: #0074D9;
-    }
-    .link-info p {
-      margin: 0 0 8px;
-    }
-    .link-info a {
-      color: #0074D9;
+    .item-title {
       font-weight: bold;
+      font-size: 1.2em;
+      margin-bottom: 5px;
+    }
+    .item-desc {
+      margin-bottom: 5px;
+    }
+    .item a {
+      color: #007bff;
       text-decoration: none;
     }
-    .link-info a:hover {
+    .item a:hover {
       text-decoration: underline;
+    }
+    @media (max-width: 600px) {
+      .item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .item img {
+        margin: 0 0 10px 0;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>פעילויות חינמיות לילדים ולמשפחה</h1>
-  <div class="link-list" id="link-list"></div>
+  <div class="container" id="links-container"></div>
 
   <script>
     const links = [
-      {
-        title: "התזמורת הפילהרמונית",
-        description: "מופעים מוזיקליים לצפייה חינמית אונליין",
-        url: "https://www.ipo.co.il/ipo-kids-streaming/",
-        image: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Israel_Philharmonic_Orchestra.jpg"
-      },
-      {
-        title: "תיאטרון אורנה פורת",
-        description: "הצגות מרגשות אונליין לכל המשפחה",
-        url: "https://www.porat-theater.co.il/%D7%94%D7%A6%D7%92%D7%95%D7%AA_%D7%9C%D7%A6%D7%A4%D7%99%D7%94_%D7%97%D7%95%D7%A4%D7%A9%D7%99%D7%AA",
-        image: "https://www.porat-theater.co.il/images/logo.png"
-      },
-      {
-        title: "מאגר סרטי קולנוע – משרד החינוך",
-        description: "מאגר סרטים – כניסה דרך הזדהות חינוכית, מחשב בלבד",
-        url: "https://pop.education.gov.il/sherutey-tiksuv-bachinuch/maagar-sratim/",
-        image: "https://pop.education.gov.il/assets/images/logo_hebrew.png"
-      },
-      {
-        title: "מאגר דפי עבודה",
-        description: "חוברות ופעילויות להדפסה",
-        url: "https://bit.ly/free-activity-sheets10",
-        image: "https://cdn-icons-png.flaticon.com/512/3964/3964344.png"
-      },
-      {
-        title: "קורסים חינמיים – קמפוס IL",
-        description: "קורסים דיגיטליים חינמיים במגוון תחומים",
-        url: "https://campus.gov.il",
-        image: "https://campus.gov.il/wp-content/themes/campus/assets/img/logo.png"
-      },
-      {
-        title: "LearnEnglish Kids – British Council",
-        description: "משחקים, סרטונים ודפי עבודה באנגלית לילדים",
-        url: "https://learnenglishkids.britishcouncil.org",
-        image: "https://learnenglishkids.britishcouncil.org/sites/kids/files/styles/article_image/public/2017/10/lek_facebook_logo.png"
-      },
-      {
-        title: "National Geographic Kids",
-        description: "כתבות, משחקים וסרטונים על חיות, טבע ומדע",
-        url: "https://kids.nationalgeographic.com",
-        image: "https://kids.nationalgeographic.com/assets/images/logos/kids-logo-natgeo.png"
-      },
-      {
-        title: "כאן חינוכית",
-        description: "סדרות ילדים באיכות גבוהה",
-        url: "https://www.kankids.org.il/",
-        image: "https://upload.wikimedia.org/wikipedia/he/thumb/1/1a/Kan_logo.svg/2560px-Kan_logo.svg.png"
-      }
-      // המשך הוספת שאר הקישורים כאן...
+      { "title": "🎼 התזמורת הפילהרמונית הישראלית", "description": "מופעים והצגות מוזיקליות חינמיות לצפייה אונליין, כולל תכנים לילדים.", "url": "https://www.ipo.co.il/ipo-kids-streaming/", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVy51lNtW-MSLOk9sdQE7Qm1WkJkBtpkmoIw&s" },
+      { "title": "🎭 תיאטרון אורנה פורת", "description": "הצגות איכותיות ומרגשות לצפייה חינמית אונליין, לכל המשפחה.", "url": "https://www.porat-theater.co.il/%D7%94%D7%A6%D7%92%D7%95%D7%AA_%D7%9C%D7%A6%D7%A4%D7%99%D7%94_%D7%97%D7%95%D7%A4%D7%A9%D7%99%D7%AA", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiMhHYHGGF9OA23M9KO1Ia35QEhi9Sa_kzdA&s" },
+      { "title": "📽️ מאגר סרטי קולנוע חינמי במשרד החינוך", "description": "אפשר דרך מחשב בלבד. כניסה עם הזדהות משרד החינוך של הילדים.", "url": "https://pop.education.gov.il/sherutey-tiksuv-bachinuch/maagar-sratim/", "image": "https://lh4.googleusercontent.com/proxy/0QYbYVUaNB0IleqHL8CPuv4EOWjN_wFDRqK63C8LwnB8H9THH47ahdp9OZ-W36hmC87reW_fTq5QgG11Ylnk_NhfaHTwnQ31rcTd4gMM09IzqdhbhqizOZwh" },
+      { "title": "📚 מאגר דפי עבודה ופעילויות לילדים", "description": "חוברות עבודה, דפי עבודה ופעילויות חינוכיות להורדה והדפסה.", "url": "https://www.yeladimstore.com/kids-activities-main", "image": "https://worksheets4kids.co.il/wp-content/uploads/2020/10/worksheets4kids.jpg" },
+      { "title": "🎓 קורסים חינמיים של קמפוס IL", "description": "קורסים דיגיטליים חינמיים במגוון תחומים – לנוער, מבוגרים ולכל המשפחה.", "url": "https://campus.gov.il", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeCI6vqd28d41DgjclRz5xSq1lQZKyfd2CMA&s" },
+      { "title": "🌍 LearnEnglish Kids – British Council", "description": "משחקים, סרטונים ודפי עבודה באנגלית לילדים.", "url": "https://learnenglishkids.britishcouncil.org", "image": "https://librum.io/wp-content/uploads/2020/04/a5d1b9eaf640e0f80d181b29deb9fcc9.png.webp" },
+      { "title": "🌿 National Geographic Kids", "description": "כתבות, משחקים וסרטונים על חיות, טבע ומדע.", "url": "https://kids.nationalgeographic.com", "image": "https://streamline.imgix.net/faf11052-ce53-4319-add4-826bf3c4a346/0a575d17-768a-48a6-9ba6-a7bccaf76aae/NG-Kids.jpg?ixlib=rb-1.1.0&or=0&w=720&h=720&fit=max&auto=format%2Ccompress&s=e12437d2b8c33f63f53c48a07e2add82" },
+      { "title": "🎮 משחקים ופעילויות לממד", "description": "אוסף משחקים ופעילות \"כוחות העל של בעלי החיים\".", "url": "https://websim.com/p/wvwkktrfymbxrz_te6hs", "image": "https://storage.tv2000.co.il/articles_new/21442_tumb_1200X768.webp" },
+      { "title": "📺 כאן חינוכית – סדרות ילדים", "description": "תכנים חינוכיים, סדרות ופעילויות לילדים.", "url": "https://www.kankids.org.il/", "image": "https://yt3.googleusercontent.com/2ar8IuWjF20rEq8qEGf96FXLeDgRp4hrYT1BC6MS77f4aeehTO60Ec3im9_8E5v7yy9J8tRHH9c=s900-c-k-c0x00ffffff-no-rj" },
+      { "title": "🎙️ ענבל ישראל – ניסויים, פודקאסטים ויצירה", "description": "מגוון תכנים חינוכיים ויצירתיים לילדים.", "url": "https://inbalskits.com/experiments_2/", "image": "https://inbalskits.com/wp-content/uploads/2021/07/%D7%9C%D7%95%D7%92%D7%95F-1.png" },
+      { "title": "🎨 מציירים עם דניאל", "description": "ערוץ יוטיוב ללימוד ציור לילדים.", "url": "https://www.youtube.com/@letsdrawcomics/playlists", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmLAnfnxLBqg-b1WnPSRZeibVC6vleDPwo7w&s" },
+      { "title": "📚 BrainPOP – תכנים לימודיים", "description": "כניסה עם הזדהות משרד החינוך – סרטונים במגוון נושאים.", "url": "https://il.brainpop.com/", "image": "https://static.wixstatic.com/media/ba756b_8a000ba4f3cc44df9d2836203d6f3721~mv2.png/v1/fill/w_1920,h_1080,al_c/ba756b_8a000ba4f3cc44df9d2836203d6f3721~mv2.png" },
+      { "title": "🦊 אוריגמי למתחילים", "description": "סרטוני הדרכה פשוטים לקיפולי נייר.", "url": "https://youtube.com/playlist?list=PL2j-jEXSZrdk87RT5wV34pcPYwPRzH0ci", "image": "https://play-lh.googleusercontent.com/achX8AuXXVE2s3PaADxgE81QYe6jLzecMNVyt5PUrZW64oE4g0QvQfRFMfPfCBfYiA=w240-h480-rw" },
+      { "title": "🦉 אוריגמי למתקדמים", "description": "סרטוני קיפולי נייר ברמה מתקדמת.", "url": "https://youtube.com/playlist?list=PL2j-jEXSZrdnjh09ul2Kyp0ljGD3FWNpI", "image": "https://play-lh.googleusercontent.com/achX8AuXXVE2s3PaADxgE81QYe6jLzecMNVyt5PUrZW64oE4g0QvQfRFMfPfCBfYiA=w240-h480-rw" },
+      { "title": "🌌 הרצאות קהילת הורייזון – חלל", "description": "הרצאות חינמיות לילדים ונוער בנושא חלל.", "url": "https://chat.whatsapp.com/DCiYLsuPym1LBGBTMfTaJr", "image": "https://www.space.gov.il/sites/default/files/horizonLOGO%20%283%29.png" },
+      { "title": "🧠 סרטונים לילדים סקרנים – הילי", "description": "גוף האדם, חלל, כלכלה ועוד תכנים חינוכיים.", "url": "https://www.youtube.com/@HiliMood", "image": "https://i.ytimg.com/vi/ZfBZL1W8qjE/maxresdefault.jpg" }
     ];
 
-    const container = document.getElementById("link-list");
+    const container = document.getElementById('links-container');
 
-    links.forEach(link => {
-      const item = document.createElement("div");
-      item.className = "link-item";
-
-      const img = document.createElement("img");
-      img.src = link.image;
-      img.alt = link.title;
-
-      const info = document.createElement("div");
-      info.className = "link-info";
-
-      const title = document.createElement("h3");
-      title.textContent = link.title;
-
-      const desc = document.createElement("p");
-      desc.textContent = link.description;
-
-      const a = document.createElement("a");
-      a.href = link.url;
-      a.target = "_blank";
-      a.textContent = "לצפייה";
-
-      info.appendChild(title);
-      info.appendChild(desc);
-      info.appendChild(a);
-
-      item.appendChild(img);
-      item.appendChild(info);
-      container.appendChild(item);
+    links.forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'item';
+      div.innerHTML = `
+        <img src="${item.image}" alt="תמונה">
+        <div class="item-content">
+          <div class="item-title">${item.title}</div>
+          <div class="item-desc">${item.description}</div>
+          <a href="${item.url}" target="_blank">מעבר לקישור</a>
+        </div>
+      `;
+      container.appendChild(div);
     });
   </script>
 </body>
