@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>קישורים חינמיים לכל המשפחה</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #fefefe;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #0074D9;
+    }
+    .link-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .link-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 16px;
+      transition: transform 0.2s ease;
+    }
+    .link-item:hover {
+      transform: translateY(-3px);
+    }
+    .link-item img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+    .link-info {
+      flex-grow: 1;
+    }
+    .link-info h3 {
+      margin: 0 0 6px;
+      color: #0074D9;
+    }
+    .link-info p {
+      margin: 0 0 8px;
+    }
+    .link-info a {
+      color: #0074D9;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .link-info a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>פעילויות חינמיות לילדים ולמשפחה</h1>
+  <div class="link-list" id="link-list"></div>
+
+  <script>
+    const links = [
+      {
+        title: "התזמורת הפילהרמונית",
+        description: "מופעים מוזיקליים לצפייה חינמית אונליין",
+        url: "https://www.ipo.co.il/ipo-kids-streaming/",
+        image: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Israel_Philharmonic_Orchestra.jpg"
+      },
+      {
+        title: "תיאטרון אורנה פורת",
+        description: "הצגות מרגשות אונליין לכל המשפחה",
+        url: "https://www.porat-theater.co.il/%D7%94%D7%A6%D7%92%D7%95%D7%AA_%D7%9C%D7%A6%D7%A4%D7%99%D7%94_%D7%97%D7%95%D7%A4%D7%A9%D7%99%D7%AA",
+        image: "https://www.porat-theater.co.il/images/logo.png"
+      },
+      {
+        title: "מאגר סרטי קולנוע – משרד החינוך",
+        description: "מאגר סרטים – כניסה דרך הזדהות חינוכית, מחשב בלבד",
+        url: "https://pop.education.gov.il/sherutey-tiksuv-bachinuch/maagar-sratim/",
+        image: "https://pop.education.gov.il/assets/images/logo_hebrew.png"
+      },
+      {
+        title: "מאגר דפי עבודה",
+        description: "חוברות ופעילויות להדפסה",
+        url: "https://bit.ly/free-activity-sheets10",
+        image: "https://cdn-icons-png.flaticon.com/512/3964/3964344.png"
+      },
+      {
+        title: "קורסים חינמיים – קמפוס IL",
+        description: "קורסים דיגיטליים חינמיים במגוון תחומים",
+        url: "https://campus.gov.il",
+        image: "https://campus.gov.il/wp-content/themes/campus/assets/img/logo.png"
+      },
+      {
+        title: "LearnEnglish Kids – British Council",
+        description: "משחקים, סרטונים ודפי עבודה באנגלית לילדים",
+        url: "https://learnenglishkids.britishcouncil.org",
+        image: "https://learnenglishkids.britishcouncil.org/sites/kids/files/styles/article_image/public/2017/10/lek_facebook_logo.png"
+      },
+      {
+        title: "National Geographic Kids",
+        description: "כתבות, משחקים וסרטונים על חיות, טבע ומדע",
+        url: "https://kids.nationalgeographic.com",
+        image: "https://kids.nationalgeographic.com/assets/images/logos/kids-logo-natgeo.png"
+      },
+      {
+        title: "כאן חינוכית",
+        description: "סדרות ילדים באיכות גבוהה",
+        url: "https://www.kankids.org.il/",
+        image: "https://upload.wikimedia.org/wikipedia/he/thumb/1/1a/Kan_logo.svg/2560px-Kan_logo.svg.png"
+      }
+      // המשך הוספת שאר הקישורים כאן...
+    ];
+
+    const container = document.getElementById("link-list");
+
+    links.forEach(link => {
+      const item = document.createElement("div");
+      item.className = "link-item";
+
+      const img = document.createElement("img");
+      img.src = link.image;
+      img.alt = link.title;
+
+      const info = document.createElement("div");
+      info.className = "link-info";
+
+      const title = document.createElement("h3");
+      title.textContent = link.title;
+
+      const desc = document.createElement("p");
+      desc.textContent = link.description;
+
+      const a = document.createElement("a");
+      a.href = link.url;
+      a.target = "_blank";
+      a.textContent = "לצפייה";
+
+      info.appendChild(title);
+      info.appendChild(desc);
+      info.appendChild(a);
+
+      item.appendChild(img);
+      item.appendChild(info);
+      container.appendChild(item);
+    });
+  </script>
+</body>
+</html>
